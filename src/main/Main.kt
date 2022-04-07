@@ -1,16 +1,22 @@
 fun main(args: Array<String>){
+    var nums = arrayOf(0, 1, 2, 3)
 
+    val res = bubbleSort(nums)
+    for(r in res) {
+        println(r)
+    }
 }
 
-class Solution {
-    fun arraySign(nums: IntArray): Int {
-        var res:Int = 1
-
-        for(num in nums) {
-            if(num == 0) res = 0
-            else if(num < 0) res *= -1
+fun bubbleSort(nums: Array<Int>): Array<Int> {
+    for(i in nums.size - 1 downTo 0) {
+        for(j in 0 until i) {
+            if(nums[j] > nums[j+1]) {
+                val temp = nums[j]
+                nums[j] = nums[i]
+                nums[i] = temp
+            }
         }
-
-        return res
     }
+
+    return nums
 }
