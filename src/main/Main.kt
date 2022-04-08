@@ -1,22 +1,16 @@
 fun main(args: Array<String>){
-    var nums = arrayOf(0, 1, 2, 3)
 
-    val res = bubbleSort(nums)
-    for(r in res) {
-        println(r)
-    }
+    val sl = Solution()
+    val s = "A man, a plan, a canal: Panama"
+    val res = sl.isPalindrome(s)
+
+    println(res)
 }
 
-fun bubbleSort(nums: Array<Int>): Array<Int> {
-    for(i in nums.size - 1 downTo 0) {
-        for(j in 0 until i) {
-            if(nums[j] > nums[j+1]) {
-                val temp = nums[j]
-                nums[j] = nums[i]
-                nums[i] = temp
-            }
-        }
+class Solution {
+    fun isPalindrome(s: String): Boolean {
+        val t = s.toLowerCase().replace("[^a-zA-Z0-9]".toRegex(), "")
+        println(t)
+        return t == t.reversed();
     }
-
-    return nums
 }
