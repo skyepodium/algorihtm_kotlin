@@ -1,16 +1,25 @@
+import java.util.*
+
 fun main(args: Array<String>){
 
-    val sl = Solution()
-    val s = "A man, a plan, a canal: Panama"
-    val res = sl.isPalindrome(s)
-
-    println(res)
 }
 
-class Solution {
-    fun isPalindrome(s: String): Boolean {
-        val t = s.toLowerCase().replace("[^a-zA-Z0-9]".toRegex(), "")
-        println(t)
-        return t == t.reversed();
+class KthLargest(k: Int, nums: IntArray) {
+
+    private val pq: PriorityQueue<Int> = PriorityQueue { a, b -> b - a }
+    private val k = k
+
+    init {
+        for(element in nums) pq.add(element)
+
+        while(pq.size > k) pq.poll()
+    }
+
+    fun add(a: Int): Int {
+        pq.add(a)
+
+        while(pq.size > k) pq.poll()
+
+        return pq.peek()
     }
 }
